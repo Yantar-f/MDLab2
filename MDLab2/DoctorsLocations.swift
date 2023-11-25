@@ -33,14 +33,16 @@ struct DoctorsLocations: View {
                 .foregroundColor(Color("text_primary_dark"))
                 .bold(true)
                 
-            LazyVStack {
-                ForEach(locationsInfo.startIndex...locationsInfo.endIndex - 1, id: \.self) { value in
-                    DoctorLocationCard(doctorLocation: locationsInfo[value])
-                    
-                    Rectangle()
-                        .foregroundColor(Color("background_second"))
-                        .frame(maxHeight: 10)
-                        .padding(.horizontal, 20)
+            VStack {
+                LazyVStack {
+                    ForEach(locationsInfo.startIndex...locationsInfo.endIndex - 2, id: \.self) { value in
+                        DoctorLocationCard(doctorLocation: locationsInfo[value])
+                        
+                        Rectangle()
+                            .foregroundColor(Color("background_second"))
+                            .frame(maxHeight: 10)
+                    }
+                    DoctorLocationCard(doctorLocation: locationsInfo[locationsInfo.endIndex - 1])
                 }
             }
         }
@@ -51,49 +53,55 @@ struct DoctorLocationCard : View {
     var doctorLocation : DoctorLocation
     var body : some View {
         VStack {
-            HStack() {
-                Image(doctorLocation.doctorIcon)
-                    .resizable()
-                    .background(Color("background_second"))
-                    .scaledToFill()
-                    .clipShape(Circle())
-                    .frame(width: 60, height: 60)
-                
-                VStack(alignment: .leading) {
-                    Text("Dr." + doctorLocation.doctorName + " " + doctorLocation.doctorSurname)
-                        .foregroundColor(Color("text_primary_dark"))
-                        .bold(true)
+            Button{/*Show doctor info*/} label: {
+                HStack() {
+                    Image(doctorLocation.doctorIcon)
+                        .resizable()
+                        .background(Color("background_second"))
+                        .scaledToFill()
+                        .clipShape(Circle())
+                        .frame(width: 60, height: 60)
                     
-                    Text(doctorLocation.doctorSpecialization)
+                    VStack(alignment: .leading) {
+                        Text("Dr." + doctorLocation.doctorName + " " + doctorLocation.doctorSurname)
+                            .foregroundColor(Color("text_primary_dark"))
+                            .bold(true)
+                        
+                        Text(doctorLocation.doctorSpecialization)
+                            .foregroundColor(Color("text_second_dark"))
+                    }
+                    
+                    Spacer()
+                    
+                    Label(String(doctorLocation.distanceKm) + " KM" ,image: "location")
                         .foregroundColor(Color("text_second_dark"))
+                        .padding(.trailing, 15)
                 }
-                .padding(25)
-                
-                Spacer()
-                
-                Label(String(doctorLocation.distanceKm) + " KM" ,image: "location")
-                    .foregroundColor(Color("text_second_dark"))
-                    .padding(.trailing, 15)
+                .padding(.leading, 20)
+                .padding(.vertical, 20)
+                .background(Color("background_primary"))
             }
-            .padding(.leading, 20)
             
             Rectangle()
                 .foregroundColor(Color("background_second"))
-                .frame(maxHeight: 5)
-                .padding(.horizontal, 20)
+                .frame(maxHeight: 2)
             
-            HStack {
-                Spacer()
-                
-                Label("reviews", image: "clock_2")
-                    .foregroundColor(.black)
-                
-                Spacer()
-                
-                Label("open at", image: "clock_3")
-                    .foregroundColor(.black)
-                
-                Spacer()
+            VStack{
+                HStack {
+                    Spacer()
+                    
+                    Label("reviews", image: "clock_2")
+                        .foregroundColor(Color(red: 254/255, green: 176/255, blue: 82/255))
+                        .padding(.vertical, 5)
+                    
+                    Spacer()
+                    
+                    Label("open at", image: "clock_3")
+                        .foregroundColor(Color(red: 80/255, green: 148/255, blue: 252/255))
+                    
+                    Spacer()
+                }
+                .background(Color("background_primary"))
             }
         }
     }
@@ -118,3 +126,4 @@ struct DoctorLocationCard_Preview : PreviewProvider {
         )
     }
 }
+

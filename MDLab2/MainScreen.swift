@@ -36,7 +36,7 @@ struct MainScreen: View {
                     ServiceCategoriesCard().padding(.vertical, 10)
                     DoctorsLocations(locationsInfo: doctorsLocations).padding(.vertical, 10)
                 }
-                .background(.white)
+                .background(Color("background_primary"))
                 .padding(20)	
             }
             
