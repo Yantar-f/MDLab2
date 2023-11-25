@@ -25,6 +25,7 @@ struct MainScreen: View {
             distanceKm: 1.2
         ),
     ]
+    
     var body: some View {
         ZStack(alignment: .top) {
             ScrollView {

@@ -9,6 +9,11 @@ import Foundation
 import SwiftUI
 
 struct NavigationBar: View {
+    @State var isHomeSelected = true
+    @State var isCalendarSelected = false
+    @State var isMessagesSelected = false
+    @State var isProfileSelected = false
+    
     var body: some View {
         VStack {
             Rectangle()
@@ -17,13 +22,41 @@ struct NavigationBar: View {
                 .padding(.bottom, 10)
             HStack {
                 Spacer()
-                NavigationSection(name: "Home", isSelected: true, icon: "Home")
+                Button {
+                    isHomeSelected = true
+                    isCalendarSelected = false
+                    isMessagesSelected = false
+                    isProfileSelected = false
+                } label: {
+                    NavigationSection(name: "Home", isSelected: isHomeSelected, icon: "Home")
+                }
                 Spacer()
-                NavigationSection(name: "Calendar", isSelected: false, icon: "calendar-2")
+                Button {
+                    isHomeSelected = false
+                    isCalendarSelected = true
+                    isMessagesSelected = false
+                    isProfileSelected = false
+                } label: {
+                    NavigationSection(name: "Calendar", isSelected: isCalendarSelected, icon: "calendar-2")
+                }
                 Spacer()
-                NavigationSection(name: "Messages", isSelected: false, icon: "message")
+                Button {
+                    isHomeSelected = false
+                    isCalendarSelected = false
+                    isMessagesSelected = true
+                    isProfileSelected = false
+                } label: {
+                    NavigationSection(name: "Messages", isSelected: isMessagesSelected, icon: "message")
+                }
                 Spacer()
-                NavigationSection(name: "Profile", isSelected: false, icon: "profile")
+                Button {
+                    isHomeSelected = false
+                    isCalendarSelected = false
+                    isMessagesSelected = false
+                    isProfileSelected = true
+                } label: {
+                    NavigationSection(name: "Profile", isSelected: isProfileSelected, icon: "profile")
+                }
                 Spacer()
             }
         }.background(.white)

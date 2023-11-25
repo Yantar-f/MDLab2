@@ -11,13 +11,13 @@ import SwiftUI
 struct ServiceCategoriesCard : View {
     var body: some View {
         HStack {
-            ServiceCategoryCard(name: "Covid 19", icon: "covid")
+            Button {/*show category*/} label: {ServiceCategoryCard(name: "Covid 19", icon: "covid")}
             Spacer()
-            ServiceCategoryCard(name: "Doctor", icon: "profile-add")
+            Button {/*show category*/} label: {ServiceCategoryCard(name: "Doctor", icon: "profile-add")}
             Spacer()
-            ServiceCategoryCard(name: "Medicine", icon: "link")
+            Button {/*show category*/} label: {ServiceCategoryCard(name: "Medicine", icon: "link")}
             Spacer()
-            ServiceCategoryCard(name: "Hospital", icon: "hospital")
+            Button {/*show category*/} label: {ServiceCategoryCard(name: "Hospital", icon: "hospital")}
         }
     }
 }

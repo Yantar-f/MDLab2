@@ -34,8 +34,10 @@ struct VisitCard : View {
                 
                 Spacer()
                 
-                Image("arrow-right")
-                    .padding(.trailing, 20)
+                Button {/*View next visit*/} label: {
+                    Image("arrow-right")
+                        .padding(.trailing, 20)
+                }
             }
             
             Rectangle()

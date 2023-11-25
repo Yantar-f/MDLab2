@@ -9,13 +9,20 @@ import Foundation
 import SwiftUI
 
 struct SearchBar: View {
+    @State var searchStr = ""
     var body: some View {
         HStack {
-            Image("search-normal")
-                .padding(.horizontal, 15)
-                .padding(.vertical, 15)
-            Text("Search doctor or health issue")
-                .foregroundColor(Color("text_second_dark"))
+            Button {/*Search*/} label: {
+                Image("search-normal")
+                    .padding(.horizontal, 15)
+                    .padding(.vertical, 15)
+            }
+        
+            TextField(text: $searchStr) {
+                Text("Search doctor or health issue")
+                    .foregroundColor(Color("text_second_dark"))
+            }
+            
             Spacer()
         }
         .background(Color("background_second"))
